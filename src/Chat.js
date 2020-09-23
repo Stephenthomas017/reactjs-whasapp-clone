@@ -17,9 +17,11 @@ function Chat() {
     const[roomName,setRoomName] =useState("");
     const[messages,setMessages] =useState();
 
+    console.log(roomId);
+
     useEffect(() =>{
         if(roomId){
-            db.cpllection("rooms")
+            db.collection("rooms")
             .doc(roomId)
             .onSnapshot(snapshot=>
                 setRoomName(snapshot.data().name));
@@ -86,10 +88,10 @@ function Chat() {
                 <form>
                     <input
                      value={input}
-                      onchange={(e) =>setInput(e.traget.value)}
+                      onChange={(e) =>setInput(e.traget.value)}
                        placeholder="type a messsage" 
                        type="text"/>
-                    <button onclick={sendMessage} type="submit"> Send a Message</button>
+                    <button onClick={sendMessage} type="submit"> Send a Message</button>
                 </form>
                 <MicIcon/>
 
